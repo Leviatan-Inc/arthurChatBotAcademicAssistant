@@ -4,6 +4,7 @@ import { PersonajeService } from 'src/app/service/personaje.service'
 import { AppComponent } from 'src/app/app.component';
 import { ApiBotService } from 'src/app/service/api-bot.service';
 import { ChangeDetectorRef } from '@angular/core';
+import { ConversationManager } from 'src/app/service/conversation-manager.service';
 
 
 @Component({
@@ -24,6 +25,8 @@ export class BarComponent {
 
   recognition: any = new (window as any).webkitSpeechRecognition();
 
+  private conversationManager = ConversationManager.getInstance();
+
   constructor(private service: ApiBotService, private render2 : Renderer2,
     private changeDetectorRef: ChangeDetectorRef
   ){
@@ -43,20 +46,29 @@ export class BarComponent {
     if(this.textBox == '' || this.textBox == undefined){
       alert(`Type something First, don't be a fool  :3`);
     }else {
+      // Add user message to conversation manager
+      const userMessageId = this.conversationManager.addMessage('user', this.textBox, 'text');
+      
       this.something.push({
         "me" : this.textBox,
         "you" :'Proccesing...'
       });
       console.log(this.textBox);
+      
       this.service.sendMessageToArthur(this.jsonBodyGenerator(this.textBox)).subscribe(
         (data) => {
           console.log(data.response);
+          // Add bot response to conversation manager
+          this.conversationManager.addMessage('bot', data.response, 'text');
           this.slowTypingBot(data.response);
           //this.something[this.something.length - 1].you = data.response;
         },
         (error) => {
           console.log(error);
-          this.something[this.something.length - 1].you = 'An error has ocurred while processing your request :(';
+          const errorMessage = 'An error has ocurred while processing your request :(';
+          // Add error message to conversation manager
+          this.conversationManager.addMessage('bot', errorMessage, 'text');
+          this.something[this.something.length - 1].you = errorMessage;
         });
         this.textBox = '';
         this.textBox = '';

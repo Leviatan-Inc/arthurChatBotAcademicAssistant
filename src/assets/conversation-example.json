@@ -1,0 +1,48 @@
+{
+  "sessionId": "conv_1732464000000_abc123",
+  "startTime": 1732464000000,
+  "lastActivity": 1732464120000,
+  "messages": [
+    {
+      "id": "msg_1732464010000_xyz789",
+      "timestamp": 1732464010000,
+      "sender": "user",
+      "content": "Hola, ¿cómo estás?",
+      "type": "text"
+    },
+    {
+      "id": "msg_1732464015000_def456",
+      "timestamp": 1732464015000,
+      "sender": "bot",
+      "content": "¡Hola! Estoy muy bien, gracias por preguntar. ¿En qué puedo ayudarte hoy?",
+      "type": "text"
+    },
+    {
+      "id": "msg_1732464030000_ghi789",
+      "timestamp": 1732464030000,
+      "sender": "user",
+      "content": "¿Puedes ayudarme con matemáticas?",
+      "type": "text"
+    },
+    {
+      "id": "msg_1732464035000_jkl012",
+      "timestamp": 1732464035000,
+      "sender": "bot",
+      "content": "¡Por supuesto! Estaré encantado de ayudarte con matemáticas. ¿Qué tema específico te gustaría estudiar?",
+      "type": "text"
+    }
+  ],
+  "metadata": {
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+    "language": "es-ES",
+    "timezone": "America/New_York"
+  },
+  "stats": {
+    "totalMessages": 4,
+    "userMessages": 2,
+    "botMessages": 2,
+    "duration": 120000,
+    "lastActivity": 1732464120000
+  },
+  "exportDate": "2024-11-24T15:20:00.000Z"
+}

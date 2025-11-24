@@ -9,6 +9,7 @@ import { HeaderComponent } from './package/header/header.component';
 import { ApiBotService } from './service/api-bot.service';
 import { FormsModule } from '@angular/forms';
 import { PresentationComponent } from './package/presentation/presentation.component';
+import { DownloadConversationComponent } from './package/download-conversation/download-conversation.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { PresentationComponent } from './package/presentation/presentation.compo
     BotMessageComponent,
     BarComponent,
     HeaderComponent,
-    PresentationComponent
+    PresentationComponent,
+    DownloadConversationComponent
   ],
   imports: [
     BrowserModule,
