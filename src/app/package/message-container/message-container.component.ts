@@ -4,11 +4,7 @@ import { MessageFactory } from '../../factory/message.factory';
 
 @Component({
   selector: 'app-message-container',
-  template: `
-    <div class="message-wrapper" [attr.data-sender]="messageData.sender">
-      <ng-container #messageContainer></ng-container>
-    </div>
-  `,
+  templateUrl: './message-container.component.html',
   styleUrls: ['./message-container.component.css']
 })
 export class MessageContainerComponent implements OnInit, OnDestroy {

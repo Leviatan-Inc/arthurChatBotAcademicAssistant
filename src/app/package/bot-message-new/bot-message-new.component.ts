@@ -3,22 +3,7 @@ import { MessageComponentInterface } from '../../interfaces/message.interface';
 
 @Component({
   selector: 'app-bot-message-new',
-  template: `
-    <div class="bot-message-container">
-      <div class="message-header">
-        <img class="bot-avatar" src="assets/bot.png" alt="Arthur Bot">
-        <div class="bot-info">
-          <span class="bot-name">Arthur</span>
-          <span class="timestamp" *ngIf="showTimestamp">
-            {{ formatTime(timestamp) }}
-          </span>
-        </div>
-      </div>
-      <div class="message-content bot-content">
-        <p>{{ displayContent }}<span class="typing-cursor" *ngIf="isTyping">|</span></p>
-      </div>
-    </div>
-  `,
+  templateUrl: './bot-message-new.component.html',
   styleUrls: ['./bot-message-new.component.css']
 })
 export class BotMessageNewComponent implements MessageComponentInterface, OnInit, OnDestroy {

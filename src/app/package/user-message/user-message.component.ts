@@ -3,19 +3,7 @@ import { MessageComponentInterface } from '../../interfaces/message.interface';
 
 @Component({
   selector: 'app-user-message',
-  template: `
-    <div class="user-message-container">
-      <div class="timestamp" *ngIf="showTimestamp">
-        {{ formatTime(timestamp) }}
-      </div>
-      <div class="message-content user-content">
-        <p>{{ content }}</p>
-      </div>
-      <div class="message-info">
-        <span class="sender">You</span>
-      </div>
-    </div>
-  `,
+  templateUrl: './user-message.component.html',
   styleUrls: ['./user-message.component.css']
 })
 export class UserMessageComponent implements MessageComponentInterface {

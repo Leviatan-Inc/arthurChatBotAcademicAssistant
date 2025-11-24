@@ -1,0 +1,14 @@
+<div class="bot-message-container">
+  <div class="message-header">
+    <img class="bot-avatar" src="assets/bot.png" alt="Arthur Bot">
+    <div class="bot-info">
+      <span class="bot-name">Arthur</span>
+      <span class="timestamp" *ngIf="showTimestamp">
+        {{ formatTime(timestamp) }}
+      </span>
+    </div>
+  </div>
+  <div class="message-content bot-content">
+    <p>{{ displayContent }}<span class="typing-cursor" *ngIf="isTyping">|</span></p>
+  </div>
+</div>
