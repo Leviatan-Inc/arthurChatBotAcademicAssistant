@@ -2,6 +2,9 @@ import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/co
 //import * as convJson from 'src/assets/conversation.json';
 //import bar component
 import { BarComponent } from './package/bar/bar.component';
+import { MessageService } from './service/message.service';
+import { Observable } from 'rxjs';
+import { MessageData } from './interfaces/message.interface';
 
 interface Conversation {
   me : string,
@@ -18,9 +21,11 @@ interface Conversation {
 export class AppComponent implements OnInit{
 
   isPresentation : boolean = false;
+  messages$: Observable<MessageData[]>;
 
-  constructor(private render2: Renderer2){
+  constructor(private render2: Renderer2, private messageService: MessageService){
     console.log('Starts component')
+    this.messages$ = this.messageService.messages$;
   }
 
   @ViewChild(BarComponent) bar !: BarComponent;

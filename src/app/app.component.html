@@ -2,9 +2,9 @@
   <div *ngIf="!isPresentation">
     <app-header></app-header>
     <div class="messages">
-      <div *ngFor="let i of xd">
-        <app-my-message [content]="i.me"></app-my-message>
-        <app-bot-message [content]="i.you"></app-bot-message>
+      <!-- New Factory Pattern messages -->
+      <div *ngFor="let message of messages$ | async" class="factory-message">
+        <app-message-container [messageData]="message"></app-message-container>
       </div>
     </div>
     <!--

@@ -1,28 +1,32 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { AppComponent } from './app.component';
 import { HttpClientModule, HttpClient } from '@angular/common/http'
-import { MyMessageComponent } from './package/my-message/my-message.component';
-import { BotMessageComponent } from './package/bot-message/bot-message.component';
 import { BarComponent } from './package/bar/bar.component';
 import { HeaderComponent } from './package/header/header.component';
 import { ApiBotService } from './service/api-bot.service';
 import { FormsModule } from '@angular/forms';
 import { PresentationComponent } from './package/presentation/presentation.component';
 import { DownloadConversationComponent } from './package/download-conversation/download-conversation.component';
+import { UserMessageComponent } from './package/user-message/user-message.component';
+import { BotMessageNewComponent } from './package/bot-message-new/bot-message-new.component';
+import { MessageContainerComponent } from './package/message-container/message-container.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MyMessageComponent,
-    BotMessageComponent,
     BarComponent,
     HeaderComponent,
     PresentationComponent,
-    DownloadConversationComponent
+    DownloadConversationComponent,
+    UserMessageComponent,
+    BotMessageNewComponent,
+    MessageContainerComponent
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     HttpClientModule,
     FormsModule
   ],

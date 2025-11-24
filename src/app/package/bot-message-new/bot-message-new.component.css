@@ -1,0 +1,80 @@
+.bot-message-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 15px 0;
+  width: 100%;
+}
+
+.message-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.bot-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin-right: 10px;
+  object-fit: cover;
+}
+
+.bot-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.bot-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 2px;
+}
+
+.timestamp {
+  font-size: 11px;
+  color: #999;
+}
+
+.message-content {
+  max-width: 70%;
+  padding: 12px 16px;
+  border-radius: 18px 18px 18px 4px;
+  position: relative;
+}
+
+.bot-content {
+  background: #F1F1F1;
+  color: #333;
+  border: 1px solid #E0E0E0;
+}
+
+.bot-content p {
+  margin: 0;
+  word-wrap: break-word;
+  line-height: 1.4;
+}
+
+.typing-cursor {
+  opacity: 1;
+  animation: blink 1s infinite;
+  font-weight: bold;
+  color: #007AFF;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+@media (max-width: 768px) {
+  .message-content {
+    max-width: 85%;
+  }
+  
+  .bot-avatar {
+    width: 28px;
+    height: 28px;
+  }
+}

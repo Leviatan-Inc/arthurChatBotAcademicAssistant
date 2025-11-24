@@ -5,6 +5,8 @@ import { AppComponent } from 'src/app/app.component';
 import { ApiBotService } from 'src/app/service/api-bot.service';
 import { ChangeDetectorRef } from '@angular/core';
 import { ConversationManager } from 'src/app/service/conversation-manager.service';
+import { MessageService } from 'src/app/service/message.service';
+import { MessageData } from 'src/app/interfaces/message.interface';
 
 
 @Component({
@@ -28,7 +30,7 @@ export class BarComponent {
   private conversationManager = ConversationManager.getInstance();
 
   constructor(private service: ApiBotService, private render2 : Renderer2,
-    private changeDetectorRef: ChangeDetectorRef
+    private changeDetectorRef: ChangeDetectorRef, private messageService: MessageService
   ){
     this.recognition.lang = 'es-ES';
   }
@@ -46,37 +48,49 @@ export class BarComponent {
     if(this.textBox == '' || this.textBox == undefined){
       alert(`Type something First, don't be a fool  :3`);
     }else {
-      // Add user message to conversation manager
-      const userMessageId = this.conversationManager.addMessage('user', this.textBox, 'text');
+      // Add user message using MessageService and Factory pattern
+      const userMessageData: MessageData = {
+        content: this.textBox,
+        sender: 'user',
+        type: 'text',
+        timestamp: Date.now()
+      };
       
-      this.something.push({
-        "me" : this.textBox,
-        "you" :'Proccesing...'
-      });
-      console.log(this.textBox);
+      const userMessageId = this.messageService.addMessage(userMessageData);
       
       this.service.sendMessageToArthur(this.jsonBodyGenerator(this.textBox)).subscribe(
         (data) => {
           console.log(data.response);
-          // Add bot response to conversation manager
-          this.conversationManager.addMessage('bot', data.response, 'text');
-          this.slowTypingBot(data.response);
-          //this.something[this.something.length - 1].you = data.response;
+          
+          // Add bot response using MessageService and Factory pattern
+          const botMessageData: MessageData = {
+            content: data.response,
+            sender: 'bot',
+            type: 'text',
+            timestamp: Date.now()
+          };
+          
+          this.messageService.addMessage(botMessageData);
         },
         (error) => {
           console.log(error);
           const errorMessage = 'An error has ocurred while processing your request :(';
-          // Add error message to conversation manager
-          this.conversationManager.addMessage('bot', errorMessage, 'text');
-          this.something[this.something.length - 1].you = errorMessage;
+          
+          // Add error message using MessageService and Factory pattern
+          const errorMessageData: MessageData = {
+            content: errorMessage,
+            sender: 'bot',
+            type: 'text',
+            timestamp: Date.now()
+          };
+          
+          this.messageService.addMessage(errorMessageData);
         });
+        
+        // Clear text box
         this.textBox = '';
-        this.textBox = '';
-
-
-
+      }
     }
-  }
 
   //chat enter key
   public enterKey = (event : any) => {
