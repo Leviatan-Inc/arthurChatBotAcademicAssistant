@@ -3,13 +3,14 @@ import json
 import torch
 from model import NeuratNetwork
 from nlp_pipeline import bag_of_words, tokenize
+from data_loader import get_data_loader
 
 #define use gpu isf its available or cpu instead
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-#read the intents.json file
-with open('./../DB/data.json', 'r') as json_data:
-    intents = json.load(json_data)
+#read the intents.json file using singleton
+data_loader = get_data_loader()
+intents = data_loader.get_data()
 
 #load the model wiht the prev trained data
 FILE = "./../DB/data.pth"

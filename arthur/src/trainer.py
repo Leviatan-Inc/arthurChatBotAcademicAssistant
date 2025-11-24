@@ -5,9 +5,11 @@ import json
 from nlp_pipeline import tokenize, stem, bag_of_words
 from torch.utils.data import Dataset, DataLoader
 from model import NeuratNetwork
+from data_loader import get_data_loader
 
-with open('./../DB/data.json', 'r') as f:
-    data = json.load(f)
+# Cargar los datos usando el singleton
+data_loader = get_data_loader()
+data = data_loader.get_data()
 
 all_words = []
 tags = []
