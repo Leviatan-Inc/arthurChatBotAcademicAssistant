@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { ThemeManagerService } from '../../service/theme-manager.service';
+import { MessageService } from '../../service/message.service';
+import { ConversationManager } from '../../service/conversation-manager.service';
 import { Theme } from '../../interfaces/theme.interface';
 
 @Component({
@@ -13,7 +15,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();
   currentTheme!: Theme;
 
-  constructor(private themeManager: ThemeManagerService) {}
+  constructor(
+    private themeManager: ThemeManagerService,
+    private messageService: MessageService
+  ) {}
 
   ngOnInit(): void {
     // Subscribe to theme changes
@@ -35,6 +40,18 @@ export class HeaderComponent implements OnInit, OnDestroy {
     const headerElement = document.querySelector('.themed-header') as HTMLElement;
     if (headerElement && this.currentTheme) {
       headerElement.style.fontFamily = this.currentTheme.typography.fontFamily;
+    }
+  }
+
+  clearChat(): void {
+    // Show confirmation dialog
+    const confirmClear = confirm('¿Are you sure you want to clear all conversation history? This action cannot be undone.');
+    
+    if (confirmClear) {
+      // Clear messages - this will also clear the conversation manager
+      this.messageService.clearAllMessages();
+      
+      console.log('Chat cleared successfully');
     }
   }
 }

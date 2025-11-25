@@ -55,6 +55,68 @@ body.theme-dark .themed-header {
   border-bottom: 1px solid var(--theme-border);
 }
 
+/* Clear Chat Button Styles */
+.clear-chat-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--theme-spacing-small);
+  padding: var(--theme-spacing-small) var(--theme-spacing-medium);
+  background-color: transparent;
+  color: var(--theme-text-secondary);
+  border: 1px solid var(--theme-border);
+  border-radius: var(--theme-border-radius-medium);
+  cursor: pointer;
+  font-family: var(--theme-font-family);
+  font-size: var(--theme-font-size-small);
+  font-weight: var(--theme-font-weight-normal);
+  transition: all var(--theme-transition-fast);
+  margin-right: var(--theme-spacing-medium);
+}
+
+.clear-chat-btn:hover {
+  background-color: #ef4444;
+  color: white;
+  border-color: #ef4444;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
+}
+
+.clear-chat-btn:active {
+  transform: translateY(0);
+}
+
+.clear-chat-btn svg {
+  flex-shrink: 0;
+  transition: transform var(--theme-transition-fast);
+}
+
+.clear-chat-btn:hover svg {
+  transform: scale(1.1);
+}
+
+/* Theme-specific button styling */
+body.theme-dark .clear-chat-btn {
+  color: var(--theme-text-secondary);
+  border-color: var(--theme-border);
+}
+
+body.theme-dark .clear-chat-btn:hover {
+  background-color: #dc2626;
+  border-color: #dc2626;
+}
+
+body.theme-academic .clear-chat-btn {
+  font-family: var(--theme-font-family);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: var(--theme-font-weight-bold);
+}
+
+body.theme-academic .clear-chat-btn:hover {
+  background-color: #b91c1c;
+  border-color: #b91c1c;
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
   .header-content {
@@ -73,5 +135,20 @@ body.theme-dark .themed-header {
   
   .app-subtitle {
     font-size: 0.75rem;
+  }
+  
+  .header-controls {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .clear-chat-btn {
+    font-size: 0.75rem;
+    padding: var(--theme-spacing-small);
+  }
+  
+  .clear-chat-btn span {
+    display: none; /* Hide text on mobile, keep icon */
   }
 }
