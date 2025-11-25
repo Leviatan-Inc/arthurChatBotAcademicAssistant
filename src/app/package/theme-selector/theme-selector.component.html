@@ -1,0 +1,54 @@
+<div class="theme-selector" (document:click)="onDocumentClick($event)">
+  <button 
+    class="theme-toggle themed-button" 
+    (click)="toggleDropdown()"
+    (keydown)="onKeyDown($event)"
+    [attr.aria-expanded]="isOpen"
+    aria-haspopup="true"
+    aria-label="Select theme">
+    
+    <svg class="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+      <!-- Light theme icon -->
+      <path *ngIf="currentTheme === 'light'" d="M12 18a6 6 0 100-12 6 6 0 000 12zM12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+      
+      <!-- Dark theme icon -->
+      <path *ngIf="currentTheme === 'dark'" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+      
+      <!-- Academic theme icon -->
+      <path *ngIf="currentTheme === 'academic'" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+    </svg>
+    
+    <span class="theme-name">{{ getCurrentThemeName() }}</span>
+    
+    <svg class="dropdown-arrow" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" [class.rotated]="isOpen">
+      <path d="M7 10l5 5 5-5z"/>
+    </svg>
+  </button>
+
+  <div class="theme-dropdown themed-container" [class.open]="isOpen" role="menu">
+    <button 
+      *ngFor="let theme of availableThemes; trackBy: trackByThemeType"
+      class="theme-option"
+      [class.active]="theme.type === currentTheme"
+      (click)="selectTheme(theme.type)"
+      (keydown)="onKeyDown($event, theme.type)"
+      role="menuitem"
+      [attr.aria-selected]="theme.type === currentTheme">
+      
+      <div class="theme-option-content">
+        <div class="theme-preview" [class]="'preview-' + theme.type"></div>
+        
+        <div class="theme-info">
+          <div class="theme-title">{{ theme.name }}</div>
+          <div class="theme-description">{{ theme.description }}</div>
+        </div>
+        
+        <div class="check-icon" *ngIf="theme.type === currentTheme">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+          </svg>
+        </div>
+      </div>
+    </button>
+  </div>
+</div>

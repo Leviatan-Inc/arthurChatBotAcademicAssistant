@@ -12,6 +12,8 @@ import { DownloadConversationComponent } from './package/download-conversation/d
 import { UserMessageComponent } from './package/user-message/user-message.component';
 import { BotMessageNewComponent } from './package/bot-message-new/bot-message-new.component';
 import { MessageContainerComponent } from './package/message-container/message-container.component';
+import { ThemeSelectorComponent } from './package/theme-selector/theme-selector.component';
+import { ThemeManagerService } from './service/theme-manager.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { MessageContainerComponent } from './package/message-container/message-c
     DownloadConversationComponent,
     UserMessageComponent,
     BotMessageNewComponent,
-    MessageContainerComponent
+    MessageContainerComponent,
+    ThemeSelectorComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,10 @@ import { MessageContainerComponent } from './package/message-container/message-c
     HttpClientModule,
     FormsModule
   ],
-  providers: [ApiBotService],
+  providers: [
+    ApiBotService,
+    ThemeManagerService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

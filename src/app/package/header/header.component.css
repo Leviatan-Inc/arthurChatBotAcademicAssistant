@@ -1,6 +1,77 @@
-p{
-    color: black;
-    background-color: white;
-    padding: 1rem;
+.themed-header {
+  background-color: var(--theme-surface);
+  color: var(--theme-text);
+  border-bottom: 1px solid var(--theme-border);
+  padding: var(--theme-spacing-medium) var(--theme-spacing-large);
+  box-shadow: 0 2px 4px var(--theme-shadow);
+  transition: all var(--theme-transition-normal);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.app-title {
+  margin: 0;
+  font-size: var(--theme-font-size-large);
+  font-weight: var(--theme-font-weight-bold);
+  color: var(--theme-text);
+  font-family: var(--theme-font-family);
+}
+
+.app-subtitle {
+  margin: 0;
+  font-size: var(--theme-font-size-small);
+  color: var(--theme-text-secondary);
+  font-family: var(--theme-font-family);
+  font-weight: var(--theme-font-weight-light);
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--theme-spacing-medium);
+}
+
+/* Theme-specific header styling */
+body.theme-academic .app-title {
+  font-family: var(--theme-font-family);
+  font-size: 1.5rem;
+  letter-spacing: 0.02em;
+}
+
+body.theme-dark .themed-header {
+  background-color: var(--theme-surface);
+  border-bottom: 1px solid var(--theme-border);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    gap: var(--theme-spacing-medium);
     text-align: center;
+  }
+  
+  .logo-section {
+    align-items: center;
+  }
+  
+  .app-title {
+    font-size: var(--theme-font-size-medium);
+  }
+  
+  .app-subtitle {
+    font-size: 0.75rem;
+  }
 }

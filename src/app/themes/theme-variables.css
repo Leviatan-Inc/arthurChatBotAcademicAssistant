@@ -1,0 +1,181 @@
+/* Global CSS Custom Properties for Theme System */
+
+/* Default theme variables (Light Theme) */
+:root {
+  /* Colors */
+  --theme-primary: #3b82f6;
+  --theme-secondary: #64748b;
+  --theme-background: #ffffff;
+  --theme-surface: #f8fafc;
+  --theme-text: #1e293b;
+  --theme-text-secondary: #64748b;
+  --theme-accent: #10b981;
+  --theme-border: #e2e8f0;
+  --theme-shadow: rgba(0, 0, 0, 0.1);
+  
+  /* Typography */
+  --theme-font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --theme-font-size-small: 0.875rem;
+  --theme-font-size-medium: 1rem;
+  --theme-font-size-large: 1.125rem;
+  --theme-font-weight-light: 300;
+  --theme-font-weight-normal: 400;
+  --theme-font-weight-bold: 600;
+  
+  /* Spacing */
+  --theme-spacing-small: 0.5rem;
+  --theme-spacing-medium: 1rem;
+  --theme-spacing-large: 1.5rem;
+  --theme-spacing-xl: 2rem;
+  
+  /* Border Radius */
+  --theme-border-radius-small: 0.25rem;
+  --theme-border-radius-medium: 0.5rem;
+  --theme-border-radius-large: 1rem;
+  
+  /* Transitions */
+  --theme-transition-fast: 0.15s ease;
+  --theme-transition-normal: 0.3s ease;
+  --theme-transition-slow: 0.5s ease;
+}
+
+/* Light Theme Specific Overrides */
+body.theme-light {
+  background-color: var(--theme-background);
+  color: var(--theme-text);
+  font-family: var(--theme-font-family);
+  transition: background-color var(--theme-transition-normal), color var(--theme-transition-normal);
+}
+
+/* Dark Theme Overrides */
+body.theme-dark {
+  --theme-primary: #60a5fa;
+  --theme-secondary: #94a3b8;
+  --theme-background: #0f172a;
+  --theme-surface: #1e293b;
+  --theme-text: #f1f5f9;
+  --theme-text-secondary: #cbd5e1;
+  --theme-accent: #34d399;
+  --theme-border: #334155;
+  --theme-shadow: rgba(0, 0, 0, 0.3);
+}
+
+/* Academic Theme Overrides */
+body.theme-academic {
+  --theme-primary: #7c3aed;
+  --theme-secondary: #6b7280;
+  --theme-background: #fefce8;
+  --theme-surface: #fffbeb;
+  --theme-text: #374151;
+  --theme-text-secondary: #6b7280;
+  --theme-accent: #f59e0b;
+  --theme-border: #d1d5db;
+  --theme-shadow: rgba(0, 0, 0, 0.05);
+  
+  /* Academic specific typography */
+  --theme-font-family: Georgia, 'Times New Roman', serif;
+  --theme-font-weight-bold: 700;
+  --theme-border-radius-small: 0.125rem;
+  --theme-border-radius-medium: 0.25rem;
+  --theme-border-radius-large: 0.5rem;
+}
+
+/* Theme-aware component styles */
+.themed-component {
+  background-color: var(--theme-surface);
+  color: var(--theme-text);
+  border: 1px solid var(--theme-border);
+  border-radius: var(--theme-border-radius-medium);
+  font-family: var(--theme-font-family);
+  transition: all var(--theme-transition-normal);
+}
+
+.themed-button {
+  background-color: var(--theme-primary);
+  color: var(--theme-background);
+  border: none;
+  border-radius: var(--theme-border-radius-small);
+  padding: var(--theme-spacing-small) var(--theme-spacing-medium);
+  font-family: var(--theme-font-family);
+  font-size: var(--theme-font-size-medium);
+  font-weight: var(--theme-font-weight-normal);
+  cursor: pointer;
+  transition: all var(--theme-transition-fast);
+}
+
+.themed-button:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px var(--theme-shadow);
+}
+
+.themed-container {
+  background-color: var(--theme-background);
+  border-radius: var(--theme-border-radius-large);
+  padding: var(--theme-spacing-large);
+  border: 1px solid var(--theme-border);
+  box-shadow: 0 4px 12px var(--theme-shadow);
+}
+
+.message-component {
+  background-color: var(--theme-surface);
+  color: var(--theme-text);
+  border-radius: var(--theme-border-radius-medium);
+  padding: var(--theme-spacing-medium);
+  margin: var(--theme-spacing-small) 0;
+  font-family: var(--theme-font-family);
+  font-size: var(--theme-font-size-medium);
+  border: 1px solid var(--theme-border);
+  transition: all var(--theme-transition-normal);
+}
+
+.message-component.user-message {
+  background-color: var(--theme-primary);
+  color: var(--theme-background);
+  margin-left: var(--theme-spacing-large);
+  align-self: flex-end;
+}
+
+.message-component.bot-message {
+  background-color: var(--theme-surface);
+  color: var(--theme-text);
+  margin-right: var(--theme-spacing-large);
+  align-self: flex-start;
+}
+
+/* Theme-specific animations and effects */
+body.theme-dark .themed-button {
+  box-shadow: 0 2px 8px var(--theme-shadow);
+}
+
+body.theme-academic .themed-button {
+  background-color: transparent;
+  color: var(--theme-primary);
+  border: 2px solid var(--theme-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: var(--theme-font-weight-bold);
+}
+
+body.theme-academic .themed-button:hover {
+  background-color: var(--theme-primary);
+  color: var(--theme-background);
+}
+
+/* Scrollbar theming */
+body.theme-dark ::-webkit-scrollbar {
+  width: 8px;
+}
+
+body.theme-dark ::-webkit-scrollbar-track {
+  background: var(--theme-surface);
+}
+
+body.theme-dark ::-webkit-scrollbar-thumb {
+  background: var(--theme-border);
+  border-radius: var(--theme-border-radius-small);
+}
+
+body.theme-dark ::-webkit-scrollbar-thumb:hover {
+  background: var(--theme-secondary);
+}

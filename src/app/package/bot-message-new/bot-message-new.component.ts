@@ -1,5 +1,9 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { MessageComponentInterface } from '../../interfaces/message.interface';
+import { ThemeManagerService } from '../../service/theme-manager.service';
+import { Theme } from '../../interfaces/theme.interface';
 
 @Component({
   selector: 'app-bot-message-new',
@@ -18,8 +22,19 @@ export class BotMessageNewComponent implements MessageComponentInterface, OnInit
   displayContent: string = '';
   isTyping: boolean = false;
   private typingInterval?: number;
+  private destroy$ = new Subject<void>();
+  currentTheme!: Theme;
+
+  constructor(private themeManager: ThemeManagerService) {}
 
   ngOnInit(): void {
+    // Subscribe to theme changes
+    this.themeManager.currentTheme$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((theme: Theme) => {
+        this.currentTheme = theme;
+      });
+
     if (this.enableTypingAnimation && this.content) {
       this.startTypingAnimation();
     } else {
@@ -31,6 +46,8 @@ export class BotMessageNewComponent implements MessageComponentInterface, OnInit
     if (this.typingInterval) {
       clearInterval(this.typingInterval);
     }
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   private startTypingAnimation(): void {

@@ -1,28 +1,83 @@
-.df{
+.df {
     display: flex;
-    background: rgba(217, 221, 245, 0.589);
-    -webkit-backdrop-filter: blur(5px);
-    backdrop-filter: blur(5px);
+    background: var(--theme-surface, rgba(217, 221, 245, 0.589));
+    border-top: 1px solid var(--theme-border, #e0e0e0);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
     width: 100%;
     position: fixed;
     bottom: 0rem;
+    padding: var(--theme-spacing-medium, 1rem);
+    box-shadow: 0 -2px 8px var(--theme-shadow, rgba(0, 0, 0, 0.1));
+    transition: all var(--theme-transition-normal, 0.3s ease);
 }
-input{
-    border-radius: 10rem;
-    padding: 1rem;
-    margin: 1rem 0rem;
+
+input {
+    border-radius: var(--theme-border-radius-large, 10rem);
+    padding: var(--theme-spacing-medium, 1rem);
+    margin: 0;
     width: 100%;
+    border: 1px solid var(--theme-border, #e0e0e0);
+    background-color: var(--theme-background, white);
+    color: var(--theme-text, black);
+    font-family: var(--theme-font-family);
+    font-size: var(--theme-font-size-medium, 1rem);
+    transition: all var(--theme-transition-fast, 0.15s ease);
 }
-button{
-    padding: 1rem;
-    margin: 1rem;
-    border-radius: 1rem;
+
+input:focus {
+    outline: none;
+    border-color: var(--theme-primary, #3b82f6);
+    box-shadow: 0 0 0 3px var(--theme-primary)33;
+}
+
+input::placeholder {
+    color: var(--theme-text-secondary, #999);
+}
+
+button {
+    padding: var(--theme-spacing-medium, 1rem);
+    margin-left: var(--theme-spacing-medium, 1rem);
+    border-radius: var(--theme-border-radius-medium, 1rem);
     cursor: pointer;
+    background-color: var(--theme-primary, #3b82f6);
+    color: var(--theme-background, white);
+    border: none;
+    font-family: var(--theme-font-family);
+    font-size: var(--theme-font-size-medium, 1rem);
+    font-weight: var(--theme-font-weight-normal, 400);
+    transition: all var(--theme-transition-fast, 0.15s ease);
+    min-width: 80px;
 }
 
-/*animated hover*/
-button:hover{
-    animation: shake 0.5s;
-    background: #f7797d;
+/* Animated hover */
+button:hover {
+    background-color: var(--theme-accent, #10b981);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--theme-shadow, rgba(0, 0, 0, 0.2));
+}
 
+button:active {
+    transform: translateY(0);
+}
+
+/* Theme-specific styling */
+body.theme-dark .df {
+    background: var(--theme-surface);
+    backdrop-filter: blur(15px);
+    border-top: 1px solid var(--theme-border);
+}
+
+body.theme-academic button {
+    background-color: transparent;
+    color: var(--theme-primary);
+    border: 2px solid var(--theme-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: var(--theme-font-weight-bold);
+}
+
+body.theme-academic button:hover {
+    background-color: var(--theme-primary);
+    color: var(--theme-background);
 }
