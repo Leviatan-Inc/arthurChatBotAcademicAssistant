@@ -162,6 +162,55 @@ body.theme-academic .themed-button:hover {
   color: var(--theme-background);
 }
 
+/* Global container and layout improvements */
+.chat-container {
+  max-width: 100%;
+  padding: 0 var(--theme-spacing-medium);
+  margin: 0 auto;
+}
+
+.message-list {
+  width: 100%;
+  padding: var(--theme-spacing-medium);
+  display: flex;
+  flex-direction: column;
+  gap: var(--theme-spacing-medium);
+}
+
+/* Better text wrapping and layout */
+.message-text {
+  word-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+/* Improved responsive breakpoints */
+@media (max-width: 480px) {
+  .chat-container {
+    padding: 0 var(--theme-spacing-small);
+  }
+  
+  .message-list {
+    padding: var(--theme-spacing-small);
+    gap: var(--theme-spacing-small);
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .chat-container {
+    padding: 0 var(--theme-spacing-medium);
+  }
+}
+
+@media (min-width: 769px) {
+  .chat-container {
+    max-width: 1200px;
+    padding: 0 var(--theme-spacing-large);
+  }
+}
+
 /* Scrollbar theming */
 body.theme-dark ::-webkit-scrollbar {
   width: 8px;

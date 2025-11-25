@@ -42,11 +42,14 @@
 }
 
 .message-content {
-  max-width: 70%;
+  max-width: 85%;
+  min-width: 200px;
   padding: var(--theme-spacing-medium, 12px) var(--theme-spacing-large, 16px);
   border-radius: var(--theme-border-radius-large, 18px) var(--theme-border-radius-large, 18px) var(--theme-border-radius-large, 18px) var(--theme-border-radius-small, 4px);
   position: relative;
   transition: all var(--theme-transition-fast, 0.15s ease);
+  word-break: break-word;
+  hyphens: auto;
 }
 
 .bot-content {
@@ -119,7 +122,8 @@ body.theme-academic .bot-content:hover {
 
 @media (max-width: 768px) {
   .message-content {
-    max-width: 85%;
+    max-width: 95%;
+    min-width: 150px;
   }
   
   .bot-avatar {
@@ -129,5 +133,20 @@ body.theme-academic .bot-content:hover {
   
   .bot-content p {
     font-size: var(--theme-font-size-small, 0.875rem);
+    line-height: 1.6;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .message-content {
+    max-width: 90%;
+    min-width: 250px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .message-content {
+    max-width: 85%;
+    min-width: 300px;
   }
 }

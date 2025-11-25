@@ -18,13 +18,13 @@ html {
 body {
     height: 100%;
     font-family: var(--theme-font-family, 'Inter', -apple-system, BlinkMacSystemFont, sans-serif);
-    font-weight: var(--theme-font-weight-normal, 400);
     background-color: var(--theme-background, #ffffff);
     color: var(--theme-text, #1e293b);
-    line-height: 1.5;
     transition: all var(--theme-transition-normal, 0.3s ease);
+    overflow-x: hidden;
+    word-wrap: break-word;
 }
-
+   
 /* Remove old gradient backgrounds when themes are active */
 body.theme-light,
 body.theme-dark,
